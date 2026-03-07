@@ -1,4 +1,4 @@
-﻿#Requires AutoHotkey v1.1.0+
+﻿#Requires AutoHotkey v1.1.20+
 ;==============================================================
 ; hideTrayTip — Hides the current tray tip notification
 ;
@@ -14,15 +14,16 @@ class VersionManager_hideTrayTip
     static _ := VersionManager_hideTrayTip._init()
     _init()    {
         global
-        HIDETRAYTIP_VERSION := "1.0.0"
+        HIDETRAYTIP_VERSION := "2.0.0"
     }
 }
 hideTrayTip()    {
     trayTip
     if (subStr(A_OSVersion, 1, 3) == "10.")    {
-        menu Tray, NoIcon
-        sleep 200
-        menu Tray, Icon
+        if (!A_IconHidden)    {
+            menu Tray, NoIcon
+            sleep 200
+            menu Tray, Icon
+        }
     }
 }
-;  
