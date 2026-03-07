@@ -14,14 +14,16 @@ class VersionManager_hideTrayTip
     static _ := this._init()
     static _init()    {
         global
-        HIDETRAYTIP_VERSION := "1.0.0"
+        HIDETRAYTIP_VERSION := "2.0.0"
     }
 }
 hideTrayTip()    {
-    trayTip
+    trayTip()
     if (subStr(A_OSVersion, 1, 3) == "10.")    {
-        A_IconHidden := true
-        sleep(200)
-        A_IconHidden := false
+        if (!A_IconHidden)    {
+            A_IconHidden := true
+            sleep(200)
+            A_IconHidden := false
+        }
     }
 }
